@@ -1,4 +1,7 @@
 import express  from "express"
+import multer from "multer";
+const storage = multer.memoryStorage();
+const upload = multer( {storage : storage} );
 
 const usuarios = express();
 
@@ -8,9 +11,9 @@ import { getUsuario,
         deleteUsuario
     } from "../controllers/usuariosController.js";
 
-usuarios.get('', getUsuario );
+usuarios.get('/:id',  getUsuario );
 
-usuarios.post('', postUsuario)
+usuarios.post('', upload.single('foto_perfil'), postUsuario)
 
 usuarios.put( '/:id', putUsuario )
 

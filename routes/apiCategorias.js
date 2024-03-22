@@ -1,4 +1,8 @@
 import express  from "express"
+import multer from "multer";
+const storage = multer.memoryStorage();
+const upload = multer( {storage : storage} );
+
 
 const categorias = express();
 
@@ -10,7 +14,7 @@ import { getCategorias,
 
 categorias.get('', getCategorias );
 
-categorias.post('', postCategorias)
+categorias.post('', upload.single('imagen'), postCategorias)
 
 categorias.put( '/:id', putCategorias )
 

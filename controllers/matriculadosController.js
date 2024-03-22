@@ -6,6 +6,7 @@ const getMatriculados = async (req, res) => {
                    u.id AS Alumno_id,
                    u.nombre AS Alumno,
                    c.titulo AS titulo_curso,
+                   m.id AS id_matricula,
                    m.fecha_matricula
                    FROM matriculados m
                    INNER JOIN usuarios u ON m.usuario_id = u.id

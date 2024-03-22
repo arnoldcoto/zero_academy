@@ -4,6 +4,7 @@ const getUsuarioRoles = async (req,res)=>{
 
     const query = `SELECT u.id AS usuario_id, u.nombre, u.apellido,
                    r.id AS rol_id, r.nombre AS nombre_rol,
+                   ur.id AS registro_rol,
                    ur.fecha_creacion AS fecha_creacion_usuario_rol
                    FROM usuarios_roles ur
                    INNER JOIN usuarios u ON ur.usuario_id = u.id
